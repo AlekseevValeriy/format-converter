@@ -1,0 +1,117 @@
+### Первое встречное{
+
+\section{Назначение}
+
+\subsection{Описание}
+
+\subsubsection*{Месторождение}
+
+\subparagraph{Общее описание}
+
+\paragraph{Защита}
+
+\def\TODO#1{\textcolor{red}{\MakeUppercase{#1}}}
+
+\usepackage[12pt]{extsizes}
+
+\setmainfont{CMU Serif}
+
+\setmonofont{JetBrains Mono}
+
+\newfontfamily\symbolfont{Symbola}
+
+\setminted{style=rust_rover, breaklines=true, fontsize=\small, frame=single}
+
+\linespread{1.15}
+
+\renewcommand{\contentsname}{\bfseries{Содержание}}
+
+\setacronymstyle{footnote}
+
+\makeglossaries
+
+\newacronym{валюта}{\symbolfont ⌬}{Хекса}
+
+\inputminted{rust}{code/2.rs}
+
+\thispagestyle{empty}
+
+\input{config}
+
+\documentclass{article}
+
+\printglossaries
+
+\newpage
+
+}
+### Вхождение в строку{
+
+Этот документ служит единым источником истины для разработки проекта Rust Gear.
+
+Примерный алгоритм установки параметров: \inputminted{rust}{code/2.rs}
+
+Примерный алгоритм установки параметров: \input{code/2.rs}
+
+\glsdesc{_ст}. \gls{ст} состоит из таймера и издателя (отправителя сообщений). Каждые \TickDuration{} секунд система тиков отправляет сообщение для обновление рынка.
+
+}
+
+
+### Структура{
+
+\begin{enumerate}
+    \item{Создание объявления о продаже}
+\end{enumerate}
+
+\begin{itemize}
+    \item{Создание объявления о продаже}
+\end{itemize}
+
+\begin{description}
+	\item[Топливо]{Нефть, природный газ, уран, уголь, тяжелая вода.}
+\end{description}
+
+\begin{table}[H]
+	\centering{%
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Регион & Оборон. бюджет (млрд.) & Население (млн.) & Пилотов \\ \hline
+		\end{tabular}%
+	}
+\end{table}
+
+\newglossaryentry{_ср}
+{
+    name={Система рынка},
+    description={Система рынка это большое хранилище товаров с которым взаимодействуют агенты}
+}
+
+\begin{tikzpicture}[remember picture, overlay]
+    
+    \node[opacity=1, inner sep=0pt] at (current page.center) {
+        \includegraphics[width=\paperwidth, height=\paperheight, keepaspectratio=false]{../../assets/title_background.png}
+    };
+    
+    \fill[black, opacity=0.6] (current page.north west) rectangle (current page.south east);
+    
+    \node[anchor=center, text=white, font=\fontsize{60}{70}\selectfont\bfseries]
+    at ([yshift=2cm]current page.center) {RUST GEAR};
+    
+    \node[anchor=center, text=white!80, font=\Large\scshape]
+    at ([yshift=0cm]current page.center) {Game Design Document};
+    
+    \draw[white, line width=0.5pt] ([yshift=-1cm, xshift=-4cm]current page.center) --
+        ([yshift=-1cm, xshift=4cm]current page.center);
+    
+    \node[anchor=center, text=white!70, font=\normalsize]
+    at ([yshift=-2.5cm]current page.center) {
+        Версия 0.1 \quad $|$ \quad Автор Алексеев Валерий
+    };
+    
+\end{tikzpicture}
+
+\begin{document}
+\end{document}
+
+}
