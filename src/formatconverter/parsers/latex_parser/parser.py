@@ -19,6 +19,7 @@ class LatexParser(Parser):
         for line in _text:
             if result := self.typefier.decompose(line):
                 block, _type = result
-                node.childrens.append(self.block_parser.parse_block(block, _type))
+                if parsed := self.block_parser.parse_block(block, _type):
+                    node.childrens.append(parsed)
 
         return node

@@ -14,5 +14,5 @@ class LatexBlocksParser:
 
         self.mix_format: list[str] = []
 
-    def parse_block(self, block: list[str], type: BlockType) -> Node:
+    def parse_block(self, block: list[str], type: BlockType) -> Node | None:
         return self.block_parsers[type].parse(block)

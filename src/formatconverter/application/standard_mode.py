@@ -4,6 +4,7 @@ from formatconverter.converters import LatexConverter, MarkdownConverter
 from formatconverter.enums import ConvertMode, LangsEnum
 from formatconverter.file_system import FileSystem
 from formatconverter.objects import ConvertPack, ScenarioData
+from formatconverter.objects.dataclasses import ParsedInput
 from formatconverter.parsers import LatexParser, MarkdownParser
 
 scenarios = [
@@ -25,15 +26,14 @@ scenarios = [
     ),
 ]
 
-
-def run():
-    cli = CLI()
+def standard_mode(cli: CLI, input: ParsedInput):
+    if not input.path.exists() or not input.new_lang or not input.old_lang:
+        return
+    
     fs = FileSystem()
     files_content = []
     new_dir = None
     scenario = None
-
-    input = cli.parse()
 
     for temp_scenario in scenarios:
         if temp_scenario.scenario_condition(input.old_lang, input.new_lang):

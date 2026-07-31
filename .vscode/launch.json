@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: FormatConverter Experiment",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "formatconverter",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src"
+            },
+            "args": [
+                "--mode",
+                "experiment"
+            ]
+        }
+    ]
+}

@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from formatconverter.converters.base_converter import Converter
-from formatconverter.enums import ConvertMode, LangsEnum
+from formatconverter.enums import ConvertMode, LangsEnum, WorkMode
 from formatconverter.parsers.base_parser import Parser
 
 from .types import Text
@@ -17,10 +17,11 @@ class ConvertPack:
 
 @dataclass
 class ParsedInput:
-    convert_mode: ConvertMode
-    path: Path
-    old_lang: LangsEnum
-    new_lang: LangsEnum
+    work_mode: WorkMode
+    convert_mode: ConvertMode | None
+    path: Path | None
+    old_lang: LangsEnum | None
+    new_lang: LangsEnum | None
 
 
 @dataclass

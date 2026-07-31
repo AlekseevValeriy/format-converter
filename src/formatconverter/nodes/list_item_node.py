@@ -5,5 +5,5 @@ from .base_node import Node
 
 @dataclass
 class ListItemNode(Node):
-    marker: str
+    marker: str | None
     text: str

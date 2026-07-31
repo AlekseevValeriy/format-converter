@@ -7,4 +7,4 @@ from .list_item_node import ListItemNode
 @dataclass
 class ListNode(Node):
     type: str
-    children: list[ListItemNode]
+    childrens: list[ListItemNode]

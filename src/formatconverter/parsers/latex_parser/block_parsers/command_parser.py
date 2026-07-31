@@ -13,8 +13,13 @@ class LatexCommandParser(LatexBlockParser):
             "subparagraph": 5,
         }
 
-    def parse(self, block: list[str]) -> Node:
-        line = block[0]
+    def parse(self, block: list[str] | str) -> Node | None:
+        line = self.block_to_line(block)  
+        
+        if line is None:
+            return None
+        elif line == "":
+            return CommandNode("")
 
         if header_node := self.try_parse_header(line):
             return header_node
@@ -22,12 +27,14 @@ class LatexCommandParser(LatexBlockParser):
         return CommandNode(line)
 
     def try_parse_header(self, line: str) -> Node | None:
+        line = line.strip()
         header = line[1 : line.find("{")]
+        
+        number_visiable = not header.endswith("*")
+        header = header.strip("*")
+        
         if header not in self.header_numbers:
             return None
-
-        number_visiable = not header.endswith("*")
-        header = header.removesuffix("*")
 
         level = self.header_numbers[header]
         text = line[line.find("{") + 1 :].removesuffix("}").strip()

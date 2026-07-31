@@ -1,3 +1,3 @@
-from formatconverter.application import run
+from formatconverter.application.application import run
 
 run()
