@@ -23,7 +23,7 @@ cd format-converter
 
 ```bash
 cd src
-python -m formatconverter "mode" "path" "old_lang" "new_lang"
+python -m formatconverter -m "mode" -s "source" -p "path" -o "old_lang" -n "new_lang"
 ```
 
 ## Помощь
@@ -34,16 +34,19 @@ python -m formatconverter --help
 ```
 
 ```bash
-usage: __main__.py [-h] {file,directory} path {markdown,latex} {markdown,latex}
-
-positional arguments:
-  {file,directory}  conversion mode
-  path              the path of the coverted file
-  {markdown,latex}  the old language of the file
-  {markdown,latex}  the new language of the file
+usage: __main__.py [-h] -m {standard,test,experiment} [-s {file,directory}] [-p PATH] [-o {markdown,latex}] [-n {markdown,latex}]
 
 options:
-  -h, --help        show this help message and exit
+  -h, --help            show this help message and exit
+  -m {standard,test,experiment}, --mode {standard,test,experiment}
+                        work_mode
+  -s {file,directory}, --source {file,directory}
+                        conversion source
+  -p PATH, --path PATH  the path of the coverted file
+  -o {markdown,latex}, --old_lang {markdown,latex}
+                        the old language of the file
+  -n {markdown,latex}, --new_lang {markdown,latex}
+                        the new language of the file
 ```
 
 ## Лицензия
