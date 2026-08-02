@@ -19,12 +19,12 @@ class LatexCommandParser(LatexBlockParser):
         if line is None:
             return None
         elif line == "":
-            return CommandNode("")
+            return LatexCommandNode("")
 
         if header_node := self.try_parse_header(line):
             return header_node
 
-        return CommandNode(line)
+        return LatexCommandNode(line)
 
     def try_parse_header(self, line: str) -> Node | None:
         line = line.strip()

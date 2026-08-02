@@ -3,6 +3,6 @@ from abc import ABC, abstractmethod
 from formatconverter.nodes import Node
 
 
-class Converter(ABC):
+class CodeGenerator(ABC):
     @abstractmethod
-    def convert(self, node: Node) -> list[str]: ...
+    def generate(self, node: Node) -> list[str]: ...

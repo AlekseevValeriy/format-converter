@@ -2,8 +2,8 @@ from formatconverter.objects.dataclasses import ConvertPack
 from formatconverter.objects.types import Text
 
 
-def convert(text: Text, pack: ConvertPack) -> Text:
+def convert(text: list[str], pack: ConvertPack) -> Text:
     node = pack.parser.parse(text)
-    converted_text = pack.converter.convert(node)
+    generater_code = pack.code_generator.generate(node)
 
-    return converted_text
+    return generater_code

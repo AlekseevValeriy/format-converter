@@ -1,6 +1,6 @@
 import pytest
 
-from formatconverter.nodes import CommandNode, MarkupTextNode, TextNode
+from formatconverter.nodes import LatexCommandNode, MarkupTextNode, TextNode
 from formatconverter.parsers.latex_parser.block_parsers import LatexMarkupTextParser
 
 
@@ -28,7 +28,7 @@ def markup_text_block_parser():
             MarkupTextNode(
                 [
                     TextNode("Примерный алгоритм установки параметров: "),
-                    CommandNode(r"\inputminted{rust}{code/2.rs}"),
+                    LatexCommandNode(r"\inputminted{rust}{code/2.rs}"),
                 ]
             ),
         ),
@@ -37,7 +37,7 @@ def markup_text_block_parser():
             MarkupTextNode(
                 [
                     TextNode("Примерный алгоритм установки параметров: "),
-                    CommandNode(r"\inputminted{rust}{code/2.rs}"),
+                    LatexCommandNode(r"\inputminted{rust}{code/2.rs}"),
                     TextNode(" Примерный алгоритм установки параметров:"),
                 ]
             ),
@@ -46,13 +46,13 @@ def markup_text_block_parser():
             r"\glsdesc{_ст}. \gls{ст} состоит из таймера и издателя (отправителя сообщений). Каждые \TickDuration{} секунд система тиков",
             MarkupTextNode(
                 [
-                    CommandNode(r"\glsdesc{_ст}"),
+                    LatexCommandNode(r"\glsdesc{_ст}"),
                     TextNode(". "),
-                    CommandNode(r"\gls{ст}"),
+                    LatexCommandNode(r"\gls{ст}"),
                     TextNode(
                         " состоит из таймера и издателя (отправителя сообщений). Каждые "
                     ),
-                    CommandNode(r"\TickDuration{}"),
+                    LatexCommandNode(r"\TickDuration{}"),
                     TextNode(" секунд система тиков"),
                 ]
             ),
@@ -62,35 +62,35 @@ def markup_text_block_parser():
             MarkupTextNode(
                 [
                     TextNode("дателя (отправите. "),
-                    CommandNode(r"\gls{ст}"),
+                    LatexCommandNode(r"\gls{ст}"),
                     TextNode(
                         " состоит из таймера и издателя (отправителя сообщений). Каждые "
                     ),
-                    CommandNode(r"\TickDuration{}"),
+                    LatexCommandNode(r"\TickDuration{}"),
                     TextNode(" секунд система тиков(отправите. "),
-                    CommandNode(r"\gls{ст}"),
+                    LatexCommandNode(r"\gls{ст}"),
                     TextNode(
                         " состоит из таймера и издателя (отправителя сообщений). Каждые "
                     ),
-                    CommandNode(r"\TickDuration{}"),
+                    LatexCommandNode(r"\TickDuration{}"),
                     TextNode(" секунд"),
                 ]
             ),
         ),
         (
             r"\gls{ст}",
-            MarkupTextNode([CommandNode(r"\gls{ст}")]),
+            MarkupTextNode([LatexCommandNode(r"\gls{ст}")]),
         ),
         (
             r".\gls{ст}.",
-            MarkupTextNode([TextNode("."), CommandNode(r"\gls{ст}"), TextNode(".")]),
+            MarkupTextNode([TextNode("."), LatexCommandNode(r"\gls{ст}"), TextNode(".")]),
         ),
         (
             r"\gls{ст}\gls{ст}",
             MarkupTextNode(
                 [
-                    CommandNode(r"\gls{ст}"),
-                    CommandNode(r"\gls{ст}"),
+                    LatexCommandNode(r"\gls{ст}"),
+                    LatexCommandNode(r"\gls{ст}"),
                 ]
             ),
         ),

@@ -2,23 +2,20 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
-from formatconverter.converters.base_converter import Converter
-from formatconverter.enums import ConvertMode, LangsEnum, WorkMode
+from formatconverter.code_generators.base_code_generator import CodeGenerator
+from formatconverter.enums import LangsEnum, WorkMode
 from formatconverter.parsers.base_parser import Parser
-
-from .types import Text
 
 
 @dataclass
 class ConvertPack:
     parser: Parser
-    converter: Converter
+    code_generator: CodeGenerator
 
 
 @dataclass
 class ParsedInput:
     work_mode: WorkMode
-    convert_mode: ConvertMode | None
     path: Path | None
     old_lang: LangsEnum | None
     new_lang: LangsEnum | None
@@ -34,4 +31,4 @@ class ScenarioData:
 @dataclass
 class FileContent:
     path: Path
-    content: Text
+    content: list[str]

@@ -4,5 +4,5 @@ from .base_node import Node
 
 
 @dataclass
-class MarkupTextNode(Node):
-    childrens: list[Node]
+class CommentNode(Node):
+    text: str

@@ -2,4 +2,4 @@ import pytest
 
 
 def test_mode():
-    pytest.main(["-vv", "../tests"]) 
+    pytest.main(["-vv", "--tb=long", "../tests"])

@@ -1,4 +1,4 @@
-import re
+import regex
 
 from formatconverter.nodes import *
 
@@ -16,9 +16,9 @@ class LatexEnvironmentParser(LatexBlockParser):
             return None
         
         _block = block[:]
-        
-        match_begin = re.search(r"\\begin\{(.*?)\}", _block[0])
-        match_end = re.search(r"\\end\{(.*?)\}", _block[-1])
+
+        match_begin = regex.search(r"\\begin\{(.*?)\}", _block[0])
+        match_end = regex.search(r"\\end\{(.*?)\}", _block[-1])
         if (match_begin and match_end) and match_begin.group(1) != match_end.group(1):
             return None
 
@@ -35,7 +35,7 @@ class LatexEnvironmentParser(LatexBlockParser):
         if not header.startswith(r"\begin{"):
             return None
 
-        match = re.search(r"\\begin\{(.*?)\}", header)
+        match = regex.search(r"\\begin\{(.*?)\}", header)
         if not match or match.group(1) not in self.tables:
             return None
         
@@ -77,7 +77,7 @@ class LatexEnvironmentParser(LatexBlockParser):
         line = line.lstrip(r"\item")
         
         if "[" in line:
-            match = re.search(r"\[(.*?)\]", line)
+            match = regex.search(r"\[(.*?)\]", line)
 
             if match and (marker := match.group(1)):
                 item_node.marker = marker

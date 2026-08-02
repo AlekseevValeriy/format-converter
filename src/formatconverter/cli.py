@@ -9,7 +9,8 @@ class CLI:
     def parse(self) -> ParsedInput:
         parser = argparse.ArgumentParser()
         parser.add_argument(
-            "-m", "--mode",
+            "-m",
+            "--mode",
             help="work_mode",
             choices=[
                 WorkMode.standard.name,
@@ -18,14 +19,6 @@ class CLI:
             ],
             default=WorkMode.standard.name,
             required=True,
-        )
-        
-        parser.add_argument(
-            "-s", "--source",
-            help="conversion source",
-            choices=[ConvertMode.file.name, ConvertMode.directory.name],
-            default=ConvertMode.file.name,
-            required=False,
         )
         parser.add_argument(
             "-p", "--path", help="the path of the coverted file", type=Path, required=False
@@ -51,19 +44,12 @@ class CLI:
             case WorkMode.standard:
                 return ParsedInput(
                     WorkMode[args.mode],
-                    ConvertMode[args.source],
                     args.path,
                     LangsEnum[args.old_lang],
                     LangsEnum[args.new_lang],
                 )
             case WorkMode.test | WorkMode.experiment:
-                return ParsedInput(
-                    WorkMode[args.mode],
-                    None,
-                    None,
-                    None,
-                    None
-                )
+                return ParsedInput(WorkMode[args.mode], None, None, None)
 
         
 

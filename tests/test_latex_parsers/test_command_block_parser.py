@@ -1,6 +1,6 @@
 import pytest
 
-from formatconverter.nodes import CommandNode, HeaderNode
+from formatconverter.nodes import LatexCommandNode, HeaderNode
 from formatconverter.parsers.latex_parser.block_parsers import LatexCommandParser
 
 
@@ -14,10 +14,10 @@ def command_block_parser():
     [
         ### Command
         ([], None),
-        ([""], CommandNode("")),
-        ("", CommandNode("")),
-        (" ", CommandNode(" ")),
-        ("\t", CommandNode("\t")),
+        ([""], LatexCommandNode("")),
+        ("", LatexCommandNode("")),
+        (" ", LatexCommandNode(" ")),
+        ("\t", LatexCommandNode("\t")),
         (r"\section{text}", HeaderNode(True, 1, "text")),
         (r"\section{}", HeaderNode(True, 1, "")),
         (r"\section*{}", HeaderNode(False, 1, "")),
@@ -34,11 +34,11 @@ def command_block_parser():
             r"\subparagraph*{\subparagraph*{text}}",
             HeaderNode(False, 5, "\\subparagraph*{text}"),
         ),
-        (r"\setmainfont{CMU Serif}", CommandNode(r"\setmainfont{CMU Serif}")),
-        (r"\setmonofont{JetBrains Mono}", CommandNode(r"\setmonofont{JetBrains Mono}")),
+        (r"\setmainfont{CMU Serif}", LatexCommandNode(r"\setmainfont{CMU Serif}")),
+        (r"\setmonofont{JetBrains Mono}", LatexCommandNode(r"\setmonofont{JetBrains Mono}")),
         (
             r"\newfontfamily\symbolfont{Symbola}",
-            CommandNode(r"\newfontfamily\symbolfont{Symbola}"),
+            LatexCommandNode(r"\newfontfamily\symbolfont{Symbola}"),
         ),
     ],
 )

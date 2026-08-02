@@ -1,15 +1,15 @@
 from collections.abc import Callable
 from pathlib import Path
 
-from formatconverter.objects import FileContent, Text
+from formatconverter.objects.dataclasses import FileContent
 
 
 class FileSystem:
-    def read_file(self, path: Path) -> Text:
+    def read_file(self, path: Path) -> list[str]:
         with open(path, "r", encoding="utf-8", errors="ignore") as file:
             return file.readlines()
 
-    def write_file(self, path: Path, text: Text):
+    def write_file(self, path: Path, text: list[str]):
         with open(path, "w", encoding="utf-8", errors="ignore") as file:
             file.writelines(text)
 
@@ -19,12 +19,17 @@ class FileSystem:
 
         return path.with_suffix(suffix)
 
+    def concat(self, new_dir: Path, file: Path):
+        return new_dir / file.name
+
     def write_files(self, files: list[FileContent]):
         for file_content in files:
             self.write_file(file_content.path, file_content.content)
 
-    def mkdir(self, path: Path, suffix: str = ""):
-        path.with_name(path.name + suffix).mkdir(exist_ok=True, parents=True)
+    def mkdir(self, path: Path, suffix: str = "") -> Path:  # not tested
+        new_path = path.with_name(path.name + suffix)
+        new_path.mkdir(exist_ok=True, parents=True)
+        return new_path
 
     def get_file_content(self, path: Path) -> FileContent:
         return FileContent(path, self.read_file(path))

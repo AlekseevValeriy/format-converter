@@ -4,5 +4,5 @@ from .base_node import Node
 
 
 @dataclass
-class CommandNode(Node):
+class LatexCommandNode(Node):
     text: str

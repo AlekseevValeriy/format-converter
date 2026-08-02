@@ -34,14 +34,12 @@ python -m formatconverter --help
 ```
 
 ```bash
-usage: __main__.py [-h] -m {standard,test,experiment} [-s {file,directory}] [-p PATH] [-o {markdown,latex}] [-n {markdown,latex}]
+usage: __main__.py [-h] -m {standard,test,experiment} [-p PATH] [-o {markdown,latex}] [-n {markdown,latex}]
 
 options:
   -h, --help            show this help message and exit
   -m {standard,test,experiment}, --mode {standard,test,experiment}
                         work_mode
-  -s {file,directory}, --source {file,directory}
-                        conversion source
   -p PATH, --path PATH  the path of the coverted file
   -o {markdown,latex}, --old_lang {markdown,latex}
                         the old language of the file

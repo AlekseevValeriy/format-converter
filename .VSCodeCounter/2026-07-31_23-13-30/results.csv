@@ -1,0 +1,7 @@
+"filename", "language", "Python", "comment", "blank", "total"
+"c:\Users\valera\Documents\Projects\Python\format-converter\tests\test_file_system.py", "Python", 98, 0, 20, 118
+"c:\Users\valera\Documents\Projects\Python\format-converter\tests\test_latex_parser\test_command_block_parser.py", "Python", 40, 1, 6, 47
+"c:\Users\valera\Documents\Projects\Python\format-converter\tests\test_latex_parser\test_environment_block_parser.py", "Python", 318, 0, 12, 330
+"c:\Users\valera\Documents\Projects\Python\format-converter\tests\test_latex_parser\test_markup_text_block_parser.py", "Python", 95, 0, 6, 101
+"c:\Users\valera\Documents\Projects\Python\format-converter\tests\test_latex_parser\test_text_block_parser.py", "Python", 43, 0, 6, 49
+"Total", "-", 594, 1, 50, 645

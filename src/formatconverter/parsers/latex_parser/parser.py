@@ -1,25 +1,20 @@
 from formatconverter.nodes import GeneralNode, Node
 from formatconverter.parsers import Parser
 
-from .block_parser import LatexBlocksParser
-from .blocker import LatexBlocker
+from .block_handler import LatexBlockHandler
+from .block_lexer import LatexBlockLexer
 
 
 class LatexParser(Parser):
     def __init__(self):
-        self.typefier = LatexBlocker()
-        self.block_parser = LatexBlocksParser()
+        self.block_lexer = LatexBlockLexer()
+        self.block_handler = LatexBlockHandler()
 
     def parse(self, text: list[str]) -> Node:
-        self.typefier.drop_analysis_state()
-
-        _text = text[:]
         node = GeneralNode([])
 
-        for line in _text:
-            if result := self.typefier.decompose(line):
-                block, _type = result
-                if parsed := self.block_parser.parse_block(block, _type):
-                    node.childrens.append(parsed)
+        for block in self.block_lexer.iter(text):
+            if block and (parsed := self.block_handler.handle(block)):
+                node.childrens.append(parsed)
 
         return node

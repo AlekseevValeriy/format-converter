@@ -32,13 +32,7 @@ def environment_block_parser():
     cell2 \\  
     cell3 \\   
 \end{tabular}""",
-            TableNode(
-                [
-                    ["cell1"],
-                    ["cell2"],
-                    ["cell3"]
-                ]
-            ),
+            TableNode([["cell1"], ["cell2"], ["cell3"]]),
         ),
         (
             r"""\begin{table}[H]
@@ -127,7 +121,7 @@ col1 & col2 & col3 \\
             TableNode(
                 [
                     ["col1", "col2", "col3"],
-                    ["\multirow{3}{4em}{Multiple row}", "cell2", "cell3"],
+                    [r"\multirow{3}{4em}{Multiple row}", "cell2", "cell3"],
                     ["", "cell5", "cell6"],
                     ["", "cell8", "cell9"],
                 ]
@@ -294,6 +288,23 @@ Algeria    &DZ & DZA \\
                     ListItemNode(None, "A blank label?"),
                 ],
             ),
+        ),
+        (
+            r"""\begin{enumerate}
+	\item{Создание объявления о продаже}
+	\item{Подача заявки на покупку}
+	\item{Покупка и продажа облигаций}
+	\item{Покупка и продажа акций}
+	\item{Заем денежных средств}
+\end{enumerate}""",
+            ListNode("enumerate",
+            [
+                ListItemNode(None, "Создание объявления о продаже"),
+                ListItemNode(None, "Подача заявки на покупку"),
+                ListItemNode(None, "Покупка и продажа облигаций"),
+                ListItemNode(None, "Покупка и продажа акций"),
+                ListItemNode(None, "Заем денежных средств"),
+            ]),
         ),
         (
             r"""\begin{itemize}
